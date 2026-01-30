@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-const BoardCell = styled.button`
+export const BoardCell = styled.button<{
+  $win: boolean;
+  $player: string | null;
+}>`
   width: 7rem;
   height: 7rem;
   border-radius: 1rem;

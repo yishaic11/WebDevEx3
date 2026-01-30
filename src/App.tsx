@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import GamePageHeader from "./components/GamePageHeader";
+import GameStatusText from "./components/GameStatusText";
+import GameBoard from "./components/styled/GameBoard";
+import BoardCell from "./components/styled/BoardCell";
+import ResetGameButton from "./components/ResetGameButton";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-lg-6 text-center">
+          <GamePageHeader />
+          <GameStatusText statusText={"place holder"} />
 
-export default App
+          <GameBoard
+            role="grid"
+            aria-label="Tic Tac Toe board"
+            className="mx-auto"
+          >
+            {Array(9)
+              .fill(null)
+              .map((value, index) => {
+                const disabled = Boolean(value);
+
+                return (
+                  <BoardCell
+                    key={index}
+                    type="button"
+                    onClick={() => {
+                      // TODO: move logic
+                    }}
+                    disabled={disabled}
+                    role="gridcell"
+                    aria-label={`Cell ${index + 1}${value ? `: ${value}` : ""}`}
+                  >
+                    {value}
+                  </BoardCell>
+                );
+              })}
+          </GameBoard>
+
+          <ResetGameButton
+            onClick={() => {
+              // TODO: reset game logic
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;

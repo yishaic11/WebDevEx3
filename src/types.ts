@@ -5,3 +5,9 @@ export type Winner = {
   winner: Player | null;
   winningLine: number[] | null;
 };
+
+export interface GameStatus {
+  winner: Player | null;
+  winningLine: number[] | null;
+  isDraw: boolean;
+}

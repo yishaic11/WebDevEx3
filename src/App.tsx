@@ -1,4 +1,3 @@
-import "./App.css";
 import GamePageHeader from "./components/GamePageHeader";
 import GameStatusText from "./components/GameStatusText";
 import GameBoard from "./components/styled/GameBoard";

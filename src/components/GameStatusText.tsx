@@ -5,12 +5,16 @@ interface GameStatusTextProps {
   winner: Player | null;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const GameStatusText = ({ statusText, winner }: GameStatusTextProps) => {
-  //TODO: add styling for winner
+  const getTextColorClass = () => {
+    if (winner === "X") return "text-danger fw-bold";
+    if (winner === "O") return "text-primary fw-bold";
+    return "text-secondary fw-bold";
+  };
+
   return (
     <header className="mb-4">
-      <h1 className={`lead fw-bold`}>{statusText}</h1>
+      <h1 className={`lead ${getTextColorClass()}`}>{statusText}</h1>
     </header>
   );
 };
